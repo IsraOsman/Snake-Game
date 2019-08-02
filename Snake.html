@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<style>
+		canvas {
+    		border:2px solid green;
+		}
+
+		#scoreHead{
+			display: inline-block;
+		}
+
+		#scoreCanvas{
+			margin-bottom: 1px;
+		}
+
+		#scorediv{
+			align-items: center;
+		}
+
+		#demo{
+			display: inline;
+		}
+
+	</style>
+</head>
+
+<body onload="game()">
+
+	<h1>Snake Game</h1>
+	<div id = 'scorediv'>
+		<div id = 'scoreHead'><h3>Score: <p id="demo"></p></h3></div>
+		
+	</div>
+	<div id = "canvasDiv">	
+		<canvas id="gameCanvas" width="600" height="450"></canvas>
+	</div>
+
+	<script type="text/javascript">
+		window.onload=function() {
+			canvas = document.getElementById("gameCanvas");
+			canContext=canvas.getContext("2d");
+			document.addEventListener("keydown",keyPush);
+			setInterval(game,150);
+		}
+
+	var intialXPostion = 60;
+	var intialYPostion = 150; 
+	var gridSize = tc = 15;
+	var foodXPostion = 150; 
+	var foodYPostion = 90;
+	var foodCount = 0; 
+	headXSpeed = gridSize; 
+	headYSpeed = 0 ;
+	snake = [];
+	tail = 3;
+
+	function drawSnake(){
+		canContext.fillStyle="green";
+		for(var i=0;i<snake.length;i++) {
+			canContext.fillRect(snake[i].x,snake[i].y,gridSize-1,gridSize-1);
+			if(snake[i].x==intialXPostion && snake[i].y==intialYPostion) {
+				tail = 3;
+				foodCount = 0;
+			}
+		}
+		snake.push({x:intialXPostion,y:intialYPostion});
+		while(snake.length>tail) {
+			snake.shift();
+		}
+		
+	}
+
+	function drawFood(){
+		canContext.fillStyle="red";
+		canContext.fillRect(foodXPostion,foodYPostion,gridSize-1,gridSize-1);
+	}
+
+	function game() {
+	
+		intialXPostion = intialXPostion + headXSpeed;
+		intialYPostion= intialYPostion + headYSpeed ;
+
+		if(intialYPostion > 450){
+			intialYPostion = 0;
+		}
+
+		if(intialXPostion > 600 ){
+		   intialXPostion = 0;
+		}
+
+		if(intialYPostion < 0){
+			intialYPostion = 450;
+		}
+
+		if(intialXPostion < 0 ){
+		   intialXPostion = 600;
+
+		}
+
+		canContext.fillStyle="aqua";
+		canContext.fillRect(0,0,canvas.width,canvas.height);
+	
+		drawSnake();
+		var foodBefore = foodCount;
+		if(foodXPostion == intialXPostion && foodYPostion == intialYPostion) {
+			tail++; 
+			var scoreArray = [];
+			foodCount = foodCount + 10;
+			randomizeFoodPosition();	
+		}
+
+		if(foodCount > foodBefore){
+				scoreArray.unshift(foodCount);
+				 document.getElementById("demo").innerHTML = scoreArray[0];
+			}	
+
+		drawFood();
+	}
+
+	function randomizeFoodPosition(){
+		foodXPostion = Math.floor(Math.random()*gridSize)*30;
+		foodYPostion = Math.floor(Math.random()*gridSize)*30;
+	}
+
+	function keyPush(evt) {
+		switch(evt.keyCode) {
+			case 37:
+				headXSpeed=-gridSize;
+				headYSpeed=0;
+			break;
+			case 38:
+				headXSpeed=0;
+				headYSpeed=-gridSize;
+			break;
+			case 39:
+				headXSpeed=gridSize;
+				headYSpeed=0;
+			break;
+			case 40:
+				headXSpeed=0;
+				headYSpeed=gridSize;
+			break;
+		}	
+	}
+	</script>
+</body>
+</html>
