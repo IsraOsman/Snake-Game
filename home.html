@@ -45,12 +45,18 @@
 
 		#container{
 			text-align: center;
+			background-image: url("https://wallpapercave.com/wp/wp2409705.jpg");
+			height: 100%;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+			position: relative;
 		}
 
 		#buttonsDiv{
 			margin-top: 10px;
 			text-align: center;
-			height: 105px;
+			height: 102px;
 		}
 
 		#up{
@@ -75,9 +81,9 @@
 		
 	</div>
 	<div id = "canvasDiv">	
-		<canvas id="gameCanvas" width="600" height="450"></canvas>
+		<canvas id="gameCanvas" width="600" height="405"></canvas>
 	</div>
-	</div>
+
 	<script type="text/javascript">
 		window.onload=function() {
 			canvas = document.getElementById("gameCanvas");
@@ -123,7 +129,7 @@
 		intialXPostion = intialXPostion + headXSpeed;
 		intialYPostion= intialYPostion + headYSpeed ;
 
-		if(intialYPostion > 450){
+		if(intialYPostion > 405){
 			intialYPostion = 0;
 		}
 
@@ -132,7 +138,7 @@
 		}
 
 		if(intialYPostion < 0){
-			intialYPostion = 450;
+			intialYPostion = 405;
 		}
 
 		if(intialXPostion < 0 ){
@@ -211,6 +217,7 @@
 	<button class = "rightLeft" onmousedown="moveleft()" ontouchstart="moveleft()">LEFT</button>
 	<button class = "rightLeft" onmousedown="moveright()" ontouchstart="moveright()">RIGHT</button><br><br>
 	<button id= "down"onmousedown="movedown()" ontouchstart="movedown()">DOWN</button>
+</div>
 </div>
 </body>
 
