@@ -30,7 +30,7 @@
 			text-align: center;
 			font-family: "Comic Sans MS", cursive, sans-serif;
 			margin-bottom: 0;
-			margin-top: 5px;
+			margin-top: 0;
 		}
 
 		p{
@@ -40,11 +40,29 @@
 		h3{
 			font-size: 30px;
 			margin-top: 10px;
-			margin-bottom: 20px;
+			margin-bottom: 10px;
 		}
 
 		#container{
 			text-align: center;
+		}
+
+		#buttonsDiv{
+			margin-top: 10px;
+			text-align: center;
+			height: 105px;
+		}
+
+		#up{
+			margin-bottom: 2px;
+		}
+
+		#down{
+			margin-top: 2px;
+		}
+
+		button{
+			background-color: aqua;
 		}
 	</style>
 </head>
@@ -147,6 +165,26 @@
 		foodYPostion = Math.floor(Math.random()*gridSize)*30;
 	}
 
+	function moveup() {
+		headXSpeed=0;
+		headYSpeed=-gridSize;	
+	}
+
+	function movedown() {
+		headXSpeed=0;
+		headYSpeed=gridSize;	
+	}
+
+	function moveleft() {
+		headXSpeed=-gridSize;
+		headYSpeed=0;	
+	}
+
+	function moveright() {
+		headXSpeed=gridSize;
+		headYSpeed=0;	
+	}
+
 	function keyPush(evt) {
 		switch(evt.keyCode) {
 			case 37:
@@ -168,5 +206,12 @@
 		}	
 	}
 	</script>
+<div id = "buttonsDiv">
+	<button id="up" onmousedown="moveup()" ontouchstart="moveup()">UP</button><br><br>
+	<button class = "rightLeft" onmousedown="moveleft()" ontouchstart="moveleft()">LEFT</button>
+	<button class = "rightLeft" onmousedown="moveright()" ontouchstart="moveright()">RIGHT</button><br><br>
+	<button id= "down"onmousedown="movedown()" ontouchstart="movedown()">DOWN</button>
+</div>
 </body>
+
 </html>
