@@ -81,7 +81,7 @@
 		
 	</div>
 	<div id = "canvasDiv">	
-		<canvas id="gameCanvas" width="600" height="405"></canvas>
+		<canvas id="gameCanvas" width="600" height="450"></canvas>
 	</div>
 
 	<script type="text/javascript">
@@ -129,7 +129,7 @@
 		intialXPostion = intialXPostion + headXSpeed;
 		intialYPostion= intialYPostion + headYSpeed ;
 
-		if(intialYPostion > 405){
+		if(intialYPostion > 450){
 			intialYPostion = 0;
 		}
 
@@ -138,7 +138,7 @@
 		}
 
 		if(intialYPostion < 0){
-			intialYPostion = 405;
+			intialYPostion = 450;
 		}
 
 		if(intialXPostion < 0 ){
@@ -167,8 +167,8 @@
 	}
 
 	function randomizeFoodPosition(){
-		foodXPostion = Math.floor(Math.random()*gridSize)*15;
-		foodYPostion = Math.floor(Math.random()*gridSize)*15;
+		foodXPostion = Math.floor(Math.random()*gridSize)*30;
+		foodYPostion = Math.floor(Math.random()*gridSize)*30;
 	}
 
 	function moveup() {
