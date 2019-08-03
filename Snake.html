@@ -9,6 +9,7 @@
 
 		#scoreHead{
 			display: inline-block;
+			font-size: 20px;
 		}
 
 		#scoreCanvas{
@@ -21,13 +22,25 @@
 
 		#demo{
 			display: inline;
+			text-align: center;
 		}
 
+		h1{
+			text-align: center;
+		}
+
+		p{
+			text-align: center;
+		}
+
+		#container{
+			text-align: center;
+		}
 	</style>
 </head>
 
 <body onload="game()">
-
+	<div id ="container">
 	<h1>Snake Game</h1>
 	<div id = 'scorediv'>
 		<div id = 'scoreHead'><h3>Score: <p id="demo"></p></h3></div>
@@ -36,7 +49,7 @@
 	<div id = "canvasDiv">	
 		<canvas id="gameCanvas" width="600" height="450"></canvas>
 	</div>
-
+	</div>
 	<script type="text/javascript">
 		window.onload=function() {
 			canvas = document.getElementById("gameCanvas");
