@@ -111,7 +111,7 @@
 	tail = 3;
 
 	function drawSnake(){
-		canContext.fillStyle="green";
+		canContext.fillStyle= "rgb(120, 168, 0)";
 		for(var i=0;i<snake.length;i++) {
 			canContext.fillRect(snake[i].x,snake[i].y,gridSize-1,gridSize-1);
 			if(snake[i].x==intialXPostion && snake[i].y==intialYPostion) {
